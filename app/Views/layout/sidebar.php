@@ -1,10 +1,16 @@
+<?php $uri = current_url(true); ?>
+
 <!-- Sidebar -->
 <div class="sidebar">
     <!-- Sidebar Menu -->
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
-                <a href="<?php echo base_url('pages') ?>" class="nav-link active">
+                <a href="<?php echo base_url('pages') ?>" class="<?php if ($uri->getSegment(3) == '' || $uri->getSegment(3) == site_url('index')) {
+                                                                        echo 'nav-link active';
+                                                                    } else {
+                                                                        echo 'nav-link';
+                                                                    } ?>">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
                         Dashboard
@@ -12,7 +18,12 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="<?php echo base_url('pages/kelola_pengguna') ?>" class="nav-link">
+
+                <a href="<?php echo base_url('pages/kelola_pengguna') ?>" class="<?php if ($uri->getSegment(3) == 'kelola_pengguna') {
+                                                                                        echo 'nav-link active';
+                                                                                    } else {
+                                                                                        echo 'nav-link';
+                                                                                    }  ?>">
                     <i class="nav-icon far fa-user"></i>
                     <p>
                         Kelola Pengguna
@@ -20,7 +31,11 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo base_url('pages/level_pengguna') ?>" class="<?php if ($uri->getSegment(3) == 'level_pengguna') {
+                                                                                    echo 'nav-link active';
+                                                                                } else {
+                                                                                    echo 'nav-link';
+                                                                                }  ?>">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
                         Level Pengguna
@@ -28,7 +43,11 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo base_url('pages/data_pegawai') ?>" class="<?php if ($uri->getSegment(3) == 'data_pegawai') {
+                                                                                    echo 'nav-link active';
+                                                                                } else {
+                                                                                    echo 'nav-link';
+                                                                                }  ?>">
                     <i class="nav-icon fas fa-user-circle"></i>
                     <p>
                         Data Pegawai

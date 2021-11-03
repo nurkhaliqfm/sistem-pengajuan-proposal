@@ -13,4 +13,14 @@ class Pages extends BaseController
     {
         return view('pages/kelola-pengguna');
     }
+
+    public function data_pegawai()
+    {
+        return view('pages/data-pegawai');
+    }
+
+    public function level_pengguna()
+    {
+        return view('pages/level-pengguna');
+    }
 }
