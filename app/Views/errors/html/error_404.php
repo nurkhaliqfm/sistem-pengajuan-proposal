@@ -1,84 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
-	<title>404 Page Not Found</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CodeBreak | Error 404</title>
 
-	<style>
-		div.logo {
-			height: 200px;
-			width: 155px;
-			display: inline-block;
-			opacity: 0.08;
-			position: absolute;
-			top: 2rem;
-			left: 50%;
-			margin-left: -73px;
-		}
-		body {
-			height: 100%;
-			background: #fafafa;
-			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-			color: #777;
-			font-weight: 300;
-		}
-		h1 {
-			font-weight: lighter;
-			letter-spacing: 0.8;
-			font-size: 3rem;
-			margin-top: 0;
-			margin-bottom: 0;
-			color: #222;
-		}
-		.wrap {
-			max-width: 1024px;
-			margin: 5rem auto;
-			padding: 2rem;
-			background: #fff;
-			text-align: center;
-			border: 1px solid #efefef;
-			border-radius: 0.5rem;
-			position: relative;
-		}
-		pre {
-			white-space: normal;
-			margin-top: 1.5rem;
-		}
-		code {
-			background: #fafafa;
-			border: 1px solid #efefef;
-			padding: 0.5rem 1rem;
-			border-radius: 5px;
-			display: block;
-		}
-		p {
-			margin-top: 1.5rem;
-		}
-		.footer {
-			margin-top: 2rem;
-			border-top: 1px solid #efefef;
-			padding: 1em 2em 0 2em;
-			font-size: 85%;
-			color: #999;
-		}
-		a:active,
-		a:link,
-		a:visited {
-			color: #dd4814;
-		}
-	</style>
+	<!-- Google Font: Source Sans Pro -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/fontawesome/all.min.css') ?>">
+	<!-- icheck bootstrap -->
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/icheck-bootstrap.min.css') ?>">
+	<!-- Theme style -->
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/adminlte.min.css') ?>">
 </head>
-<body>
-	<div class="wrap">
-		<h1>404 - File Not Found</h1>
 
-		<p>
-			<?php if (! empty($message) && $message !== '(null)') : ?>
-				<?= nl2br(esc($message)) ?>
-			<?php else : ?>
-				Sorry! Cannot seem to find the page you were looking for.
-			<?php endif ?>
-		</p>
-	</div>
+<body class="hold-transition login-page">
+	<!-- Main content -->
+	<section class="content">
+		<div class="error-page">
+			<h2 class="headline text-warning"> 404</h2>
+
+			<?php $status = session()->get('user_level'); ?>
+
+			<div class="error-content">
+				<h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! Page not found.</h3>
+
+				<p>
+					We could not find the page you were looking for.
+					Meanwhile, you may <a href="<?= $status == 'admin' ? base_url('admin') : base_url('home'); ?>">return to dashboard</a> or try using the search form.
+				</p>
+			</div>
+
+			<!-- /.error-content -->
+		</div>
+		<!-- /.error-page -->
+	</section>
+	<!-- /.content -->
+
+	<!-- jQuery -->
+	<script src="../../plugins/jquery/jquery.min.js"></script>
+	<!-- Bootstrap 4 -->
+	<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- AdminLTE App -->
+	<script src="../../dist/js/adminlte.min.js"></script>
 </body>
+
 </html>

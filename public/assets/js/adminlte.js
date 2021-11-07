@@ -1494,7 +1494,7 @@
       };
   
       _proto._setItemActive = function _setItemActive(href) {
-        $__default['default'](SELECTOR_SIDEBAR_MENU_ITEM + ", " + SELECTOR_HEADER_DROPDOWN_ITEM).removeClass('active');
+        $__default['default'](SELECTOR_SIDEBAR_MENU_ITEM + "," + SELECTOR_HEADER_DROPDOWN_ITEM).removeClass('active');
         $__default['default'](SELECTOR_HEADER_MENU_ITEM).parent().removeClass('active');
         var $headerMenuItem = $__default['default'](SELECTOR_HEADER_MENU_ITEM + "[href$=\"" + href + "\"]");
         var $headerDropdownItem = $__default['default'](SELECTOR_HEADER_DROPDOWN_ITEM + "[href$=\"" + href + "\"]");
