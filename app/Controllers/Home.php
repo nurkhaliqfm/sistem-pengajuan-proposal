@@ -24,7 +24,7 @@ class Home extends BaseController
         $nik = session()->get('nik');
         $penyuluh = $this->penyuluhModel->where(['nik' => $nik])->first();
         $data = [
-            'title' => 'Dashboard | CodeBreak',
+            'title' => 'Dashboard | Dinas Pertanian Luwu Timur',
             'header' => 'Dashboard',
             'penyuluh_name' => $penyuluh['full_name']
         ];
@@ -43,7 +43,7 @@ class Home extends BaseController
         $nik = session()->get('nik');
         $penyuluh = $this->penyuluhModel->where(['nik' => $nik])->first();
         $data = [
-            'title' => 'Profile | CodeBreak',
+            'title' => 'Profile | Dinas Pertanian Luwu Timur',
             'header' => 'Profile',
             'penyuluh_name' => $penyuluh['full_name'],
             'penyuluh' => $penyuluh
@@ -62,7 +62,7 @@ class Home extends BaseController
         $penyuluh = $this->penyuluhModel->where(['nik' => $nik])->first();
         $data_proposal = $this->proposalModel->where(['account' => $penyuluh['full_name']])->findAll();
         $data = [
-            'title' => 'Proposal | CodeBreak',
+            'title' => 'Proposal | Dinas Pertanian Luwu Timur',
             'header' => 'Daftar Proposal',
             'penyuluh_name' => $penyuluh['full_name'],
             'proposal' => $data_proposal
@@ -80,7 +80,7 @@ class Home extends BaseController
         $nik = session()->get('nik');
         $penyuluh = $this->penyuluhModel->where(['nik' => $nik])->first();
         $data = [
-            'title' => 'Proposal  | CodeBreak',
+            'title' => 'Proposal  | Dinas Pertanian Luwu Timur',
             'header' => 'Mengusulkan Proposal',
             'validation' => \Config\Services::validation(),
             'penyuluh_name' => $penyuluh['full_name']
@@ -182,7 +182,7 @@ class Home extends BaseController
         }
 
         $data = [
-            'title' => 'Detail | CodeBreak',
+            'title' => 'Detail | Dinas Pertanian Luwu Timur',
             'header' => 'Detail Proposal',
             'penyuluh_name' => $penyuluh['full_name'],
             'proposal' => $data_proposal
@@ -226,7 +226,7 @@ class Home extends BaseController
 
 
         $data = [
-            'title' => 'Edit | CodeBreak',
+            'title' => 'Edit | Dinas Pertanian Luwu Timur',
             'header' => 'Edit Proposal',
             'penyuluh_name' => $penyuluh['full_name'],
             'validation' => \Config\Services::validation(),

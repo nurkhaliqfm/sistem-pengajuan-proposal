@@ -14,6 +14,8 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/fontawesome/all.min.css') ?>">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo base_url('assets/css/adminlte.min.css') ?>">
+    <!-- Fav Icon -->
+    <link rel="icon" type="image/x-icon" href="<?php echo base_url('assets/img/logo.png') ?>">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -21,7 +23,7 @@
         <?php if (current_url(true)->getSegment(3) == 'index') : ?>
             <!-- Preloader -->
             <div class="preloader flex-column justify-content-center align-items-center" id="loader">
-                <img class="animation__shake" src="<?php echo base_url('assets/img/LogoCodeBreak.png') ?>" alt="Logo" height="60" width="60">
+                <img class="animation__shake" src="<?php echo base_url('assets/img/logo.png') ?>" alt="Logo" height="73.563" width="60">
             </div>
 
         <?php endif; ?>
@@ -29,7 +31,7 @@
         <?= $this->include('home/layout/navbar'); ?>
         <?= $this->renderSection('content'); ?>
     </div>
-    
+
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -37,7 +39,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Anda Yakin Melakukan Logout?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">Klik Tombol "Logout" Jika Anda Sudah Yakin.</div>

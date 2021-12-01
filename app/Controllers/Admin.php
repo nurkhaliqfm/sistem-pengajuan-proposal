@@ -33,7 +33,7 @@ class Admin extends BaseController
         $nik = session()->get('nik');
         $admin = $this->adminModel->where(['nik' => $nik])->first();
         $data = [
-            'title' => 'Dashboard | CodeBreak',
+            'title' => 'Dashboard | Dinas Pertanian Luwu Timur',
             'admin_name' => $admin['full_name']
         ];
         return view('admin/dashboard', $data);
@@ -56,14 +56,14 @@ class Admin extends BaseController
 
         if ($filter_value == "a") {
             $data = [
-                'title' => 'Kelola Pengguna | CodeBreak',
+                'title' => 'Kelola Pengguna | Dinas Pertanian Luwu Timur',
                 'header' => 'Kelola Pengguna',
                 'data_user' => $data_admin,
                 'admin_name' => $admin['full_name']
             ];
         } else {
             $data = [
-                'title' => 'Kelola Pengguna | CodeBreak',
+                'title' => 'Kelola Pengguna | Dinas Pertanian Luwu Timur',
                 'header' => 'Kelola Pengguna',
                 'data_user' => $penyuluh,
                 'admin_name' => $admin['full_name']
@@ -83,7 +83,7 @@ class Admin extends BaseController
         $admin = $this->adminModel->where(['nik' => $nik])->first();
         $data_proposal = $this->proposalModel->where(['status' => 'Menunggu'])->findAll();
         $data = [
-            'title' => 'Proposal Masuk | CodeBreak',
+            'title' => 'Proposal Masuk | Dinas Pertanian Luwu Timur',
             'header' => 'Daftar Proposal Yang Masuk',
             'admin_name' => $admin['full_name'],
             'proposal' => $data_proposal
@@ -101,7 +101,7 @@ class Admin extends BaseController
         $admin = $this->adminModel->where(['nik' => $nik])->first();
         $data_proposal = $this->proposalModel->where(['status' => 'Disetujui'])->findAll();
         $data = [
-            'title' => 'Proposal Disetujui | CodeBreak',
+            'title' => 'Proposal Disetujui | Dinas Pertanian Luwu Timur',
             'header' => 'Daftar Proposal Yang Diterima',
             'admin_name' => $admin['full_name'],
             'proposal' => $data_proposal
@@ -119,7 +119,7 @@ class Admin extends BaseController
         $admin = $this->adminModel->where(['nik' => $nik])->first();
         $data_proposal = $this->proposalModel->where(['status' => 'Ditolak'])->findAll();
         $data = [
-            'title' => 'Proposal Ditolak | CodeBreak',
+            'title' => 'Proposal Ditolak | Dinas Pertanian Luwu Timur',
             'header' => 'Daftar Proposal Yang Ditolak',
             'admin_name' => $admin['full_name'],
             'proposal' => $data_proposal
@@ -146,7 +146,7 @@ class Admin extends BaseController
         }
 
         $data = [
-            'title' => 'Detail Pengguna | CodeBreak',
+            'title' => 'Detail Pengguna | Dinas Pertanian Luwu Timur',
             'header' => 'Biodata Pengguna',
             'admin_name' => $admin['full_name'],
             'penyuluh' => $data_user
@@ -167,7 +167,7 @@ class Admin extends BaseController
         }
 
         $data = [
-            'title' => 'Detail | CodeBreak',
+            'title' => 'Detail | Dinas Pertanian Luwu Timur',
             'header' => 'Detail Proposal',
             'admin_name' => $admin['full_name'],
             'proposal' => $data_proposal
@@ -203,7 +203,7 @@ class Admin extends BaseController
         }
 
         $data = [
-            'title' => 'Respon | CodeBreak',
+            'title' => 'Respon | Dinas Pertanian Luwu Timur',
             'header' => 'Respon Proposal',
             'admin_name' => $admin['full_name'],
             'validation' => \Config\Services::validation(),
@@ -279,7 +279,7 @@ class Admin extends BaseController
         $nik = session()->get('nik');
         $admin = $this->adminModel->where(['nik' => $nik])->first();
         $data = [
-            'title' => 'Daftar Penyuluh | CodeBreak',
+            'title' => 'Daftar Penyuluh | Dinas Pertanian Luwu Timur',
             'header' => 'Daftar Penyuluh Luwu Timur',
             'admin_name' => $admin['full_name'],
             'member' => $member->paginate(10, 'member'),
@@ -301,7 +301,7 @@ class Admin extends BaseController
         $nik = session()->get('nik');
         $admin = $this->adminModel->where(['nik' => $nik])->first();
         $data = [
-            'title' => 'Add Penyuluh  | CodeBreak',
+            'title' => 'Add Penyuluh  | Dinas Pertanian Luwu Timur',
             'header' => 'Menambahkan Anggota Penyuluh',
             'validation' => \Config\Services::validation(),
             'admin_name' => $admin['full_name']

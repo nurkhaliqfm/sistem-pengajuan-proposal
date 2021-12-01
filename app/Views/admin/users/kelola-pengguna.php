@@ -31,13 +31,17 @@
 
             <!-- Default box -->
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Daftar User</h3>
-
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                            <i class="fas fa-minus"></i>
-                        </button>
+                <div class="card-header ">
+                    <div class="row">
+                        <div class="col">
+                            <h3 class="card-title">Daftar User</h3>
+                        </div>
+                        <td class="project-actions text-center">
+                            <a class="btn btn-warning btn-sm" href="#" data-toggle="modal" data-target="#addModal">
+                                <i class="fas fa-plus"></i>
+                                Tambah User
+                            </a>
+                        </td>
                     </div>
                 </div>
                 <div class="card-body p-0">
@@ -105,4 +109,20 @@
         </section>
         <!-- /.content -->
     </div>
-    <?= $this->endSection(); ?>
+</div>
+<!-- Add Modal-->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Menambah User</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">Mohon Maaf Fitur Ini Belum Tersedia</div>
+        </div>
+    </div>
+</div>
+
+<?= $this->endSection(); ?>
