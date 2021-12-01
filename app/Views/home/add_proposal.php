@@ -32,21 +32,21 @@
                 <?= csrf_field(); ?>
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="inputProjectLeader">Penanggung Jawab</label>
+                        <label for="inputProjectLeader">Nama Pengusul</label>
                         <input type="text" name="name" class="form-control <?= ($validation->hasError('name')) ? 'is-invalid' : ''; ?>" placeholder="Nama Lengkap" value="<?= old('name'); ?>">
                         <div class="invalid-feedback">
                             <?= $validation->getError('name'); ?>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputName">Judul Project</label>
+                        <label for="inputName">Jenis Kegiatan Usulan</label>
                         <input type="text" name="title" class="form-control <?= ($validation->hasError('title')) ? 'is-invalid' : ''; ?>" placeholder="Judul Proposal" value="<?= old('title'); ?>">
                         <div class="invalid-feedback">
                             <?= $validation->getError('title'); ?>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputDescription">Deskripsi Project</label>
+                        <label for="inputDescription">Deskripsi Usulan</label>
                         <textarea name="description" class="form-control <?= ($validation->hasError('description')) ? 'is-invalid' : ''; ?>" rows="4" placeholder="Berikan Penjelasan Singkat Tentang Proposal Yang Diajukan"><?= old('description'); ?></textarea>
                         <div class="invalid-feedback">
                             <?= $validation->getError('description'); ?>

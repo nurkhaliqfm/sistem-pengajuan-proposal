@@ -15,9 +15,17 @@
             </li>
             <li class="nav-item">
                 <a href="<?= base_url('admin/kelola_pengguna'); ?>" class="<?= $uri == 'kelola_pengguna' ? 'nav-link active' : 'nav-link'; ?>">
-                    <i class="nav-icon far fa-user"></i>
+                    <i class="nav-icon fas fa-user-cog"></i>
                     <p>
                         Kelola Pengguna
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="<?= base_url('admin/penyuluh'); ?>" class="<?= $uri == 'penyuluh' ? 'nav-link active' : 'nav-link'; ?>">
+                    <i class="nav-icon fas fa-id-badge"></i>
+                    <p>
+                        Daftar Penyuluh
                     </p>
                 </a>
             </li>

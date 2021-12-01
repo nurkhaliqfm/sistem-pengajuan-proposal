@@ -38,10 +38,10 @@
                                 No
                             </th>
                             <th style="width: 30%">
-                                Nama Project
+                                Jenis Kegiatan Usulan
                             </th>
                             <th style="width: 20%">
-                                Team Pengusul
+                                Nama Pengusul
                             </th>
                             <th style="width: 8%" class="text-center">
                                 Status

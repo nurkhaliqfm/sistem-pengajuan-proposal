@@ -50,7 +50,7 @@
                                 <th style="width: 30%">
                                     Nama
                                 </th>
-                                <?php if ($uri == 'penyuluh') : ?>
+                                <?php if ($uri == 'p' || $uri == '') : ?>
                                     <th style="width: 20%" class="text-center">
                                         Kelompok Tani
                                     </th>
@@ -75,7 +75,7 @@
                                             <?= $p['full_name']; ?>
                                         </a>
                                     </td>
-                                    <?php if ($uri == 'penyuluh') : ?>
+                                    <?php if ($uri == 'p' || $uri == '') : ?>
                                         <td class="text-center">
                                             <ul class="list-inline">
                                                 <li class="list-inline-item">

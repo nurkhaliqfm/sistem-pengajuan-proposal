@@ -6,6 +6,7 @@ use App\Models\PenyuluhModel;
 use App\Models\AdminModel;
 use App\Models\UsersModel;
 use App\Models\ProposalModel;
+use App\Models\MemberModel;
 
 class Admin extends BaseController
 {
@@ -13,12 +14,14 @@ class Admin extends BaseController
     protected $adminModel;
     protected $usersModel;
     protected $proposalModel;
+    protected $memberModel;
     public function __construct()
     {
         $this->penyuluhModel = new PenyuluhModel();
         $this->adminModel = new AdminModel();
         $this->usersModel = new UsersModel();
         $this->proposalModel = new ProposalModel();
+        $this->memberModel = new MemberModel();
     }
 
     public function index()
@@ -38,9 +41,13 @@ class Admin extends BaseController
 
     public function kelola_pengguna($filter_value = 'p')
     {
+
         if (session()->get('user_level') != 'admin') {
             return redirect()->to(base_url('home/error_404'));
         }
+        // else if (session()->get('user_level') != 'SuperAdmin') {
+        // return redirect()->to(base_url('admin/error_404'));
+        // }
 
         $nik = session()->get('nik');
         $admin = $this->adminModel->where(['nik' => $nik])->first();
@@ -243,6 +250,136 @@ class Admin extends BaseController
 
         session()->setFlashdata('success', "Proposal Telah Direspon.");
         return redirect()->to(base_url('admin/proposal_masuk'));
+    }
+
+    public function penyuluh()
+    {
+        $current_page = $this->request->getVar('page_member') ? $this->request->getVar('page_member') : 1;
+
+        if (session()->get('user_level') != 'admin') {
+            return redirect()->to(base_url('home/error_404'));
+        }
+
+        $keyword = $this->request->getVar('keyword');
+        $district = $this->request->getVar('inputStatus');
+        if ($keyword) {
+            if ($district == null) {
+                $member = $this->memberModel->search($keyword);
+            } else {
+                $member = $this->memberModel->where(['district' => $district])->search($keyword);
+            }
+        } else {
+            if ($district) {
+                $member = $this->memberModel->where(['district' => $district]);
+            } else {
+                $member = $this->memberModel;
+            }
+        }
+
+        $nik = session()->get('nik');
+        $admin = $this->adminModel->where(['nik' => $nik])->first();
+        $data = [
+            'title' => 'Daftar Penyuluh | CodeBreak',
+            'header' => 'Daftar Penyuluh Luwu Timur',
+            'admin_name' => $admin['full_name'],
+            'member' => $member->paginate(10, 'member'),
+            'pager' => $member->pager,
+            'current_page' => $current_page,
+            'keyword' => $keyword,
+            'selected' => $district
+        ];
+
+        return view('admin/penyuluh/penyuluh', $data);
+    }
+
+    public function create()
+    {
+        if (session()->get('user_level') != 'admin') {
+            return redirect()->to(base_url('home/error_404'));
+        }
+
+        $nik = session()->get('nik');
+        $admin = $this->adminModel->where(['nik' => $nik])->first();
+        $data = [
+            'title' => 'Add Penyuluh  | CodeBreak',
+            'header' => 'Menambahkan Anggota Penyuluh',
+            'validation' => \Config\Services::validation(),
+            'admin_name' => $admin['full_name']
+
+        ];
+
+        return view('admin/penyuluh/add_penyuluh', $data);
+    }
+
+    public function send()
+    {
+        if (session()->get('user_level') != 'admin') {
+            return redirect()->to(base_url('home/error_404'));
+        }
+
+        if (!$this->validate([
+            'name' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nama Penyuluh Harus Diisi'
+                ]
+            ],
+            'nik' => [
+                'rules' => 'required|is_unique[member.nik]|is_natural_no_zero',
+                'errors' => [
+                    'required' => 'NIK Harus Diisi',
+                    'is_unique' => 'NIK Ini Telah Terdaftar',
+                    'is_natural_no_zero' => 'Data Yang Anda Input Tidak Sesuai'
+                ]
+            ],
+            'team' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nama Kelompok Tani Harus Diisi',
+                ]
+            ],
+            'district' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kecamatan Kelompok Tani Harus Diisi'
+                ]
+            ],
+            'village' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Desa Kelompok Tani Harus Diisi',
+                ]
+            ],
+            'type' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Jenis Tanaman Harus Diisi',
+                ]
+            ],
+            'size' => [
+                'rules' => 'required|decimal',
+                'errors' => [
+                    'required' => 'Luas Lahan Harus Diisi',
+                    'decimal' => 'Data Yang Anda Input Tidak Sesuai'
+                ]
+            ],
+        ])) {
+            return redirect()->to(base_url('/admin/penyuluh/create'))->withInput();
+        }
+
+        $member = $this->memberModel;
+        $member->save([
+            'nik' => $this->request->getVar('nik'),
+            'name' => $this->request->getVar('name'),
+            'team' => $this->request->getVar('team'),
+            'village' => $this->request->getVar('village'),
+            'district' => $this->request->getVar('district'),
+            'size' => $this->request->getVar('size'),
+            'type' => $this->request->getVar('type'),
+        ]);
+
+        session()->setFlashdata('success', "Penyuluh Berhasil Ditambahkan.");
+        return redirect()->to(base_url('admin/penyuluh'));
     }
 
     public function error_404()

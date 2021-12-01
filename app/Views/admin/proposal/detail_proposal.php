@@ -36,15 +36,15 @@
             </div>
             <div class="card-body">
                 <div class="form-group">
-                    <label for="inputProjectLeader">Penanggung Jawab</label>
+                    <label for="inputProjectLeader">Nama Pengusul</label>
                     <input disabled type="text" name="name" class="form-control" value="<?= $proposal['username']; ?>">
                 </div>
                 <div class="form-group">
-                    <label for="inputName">Judul Project</label>
+                    <label for="inputName">Jenis Kegiatan Usulan</label>
                     <input disabled type="text" name="title" class="form-control" value="<?= $proposal['project']; ?>">
                 </div>
                 <div class="form-group">
-                    <label for="inputDescription">Deskripsi Project</label>
+                    <label for="inputDescription">Deskripsi Usulan</label>
                     <textarea disabled name="description" class="form-control" rows="4"><?= $proposal['description']; ?></textarea>
                 </div>
                 <div class="form-group">

@@ -22,6 +22,11 @@
             <div class="card-header text-center">
                 <a href="<?php echo base_url('register/index'); ?>" class="h3"><b>Sistem Pengajuan Proposal Dinas Pertanian</b></a>
             </div>
+            <?php if (session()->getFlashdata('Gagal')) : ?>
+                <div class="alert alert-danger" role="alert">
+                    <?= session()->getFlashdata('Gagal'); ?>
+                </div>
+            <?php endif; ?>
             <div class="card-body">
                 <p class="login-box-msg">Silahkan Melakukan Registrasi</p>
                 <form action="<?php echo base_url('register/process'); ?>" method="post">

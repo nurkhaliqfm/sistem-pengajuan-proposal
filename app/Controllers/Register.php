@@ -4,15 +4,18 @@ namespace App\Controllers;
 
 use App\Models\PenyuluhModel;
 use App\Models\UsersModel;
+use App\Models\MemberModel;
 
 class Register extends BaseController
 {
     protected $usersModel;
     protected $penyuluhModel;
+    protected $memberModel;
     public function __construct()
     {
         $this->usersModel = new UsersModel();
         $this->penyuluhModel = new PenyuluhModel();
+        $this->memberModel = new MemberModel();
     }
 
     public function index()
@@ -39,10 +42,11 @@ class Register extends BaseController
                 ]
             ],
             'nik' => [
-                'rules' => 'required|is_unique[users.nik]',
+                'rules' => 'required|is_unique[users.nik]|is_natural_no_zero',
                 'errors' => [
                     'required' => 'NIK Harus Diisi',
                     'is_unique' => 'NIK Telah Terdaftar',
+                    'is_natural_no_zero' => 'Data Yang Anda Input Tidak Sesuai'
                 ]
             ],
             'phone' => [
@@ -70,6 +74,14 @@ class Register extends BaseController
         ])) {
             $validation = \Config\Services::validation();
             return redirect()->to(base_url('register/index'))->withInput()->with('validation', $validation);
+        }
+
+        $member = $this->memberModel;
+        $ceknik = $member->where(['nik' => $this->request->getVar('nik')])->first();
+
+        if ($ceknik == null) {
+            session()->setFlashdata('Gagal', "Nik Anda Tidak Terdaftar Sebagai Penyuluh.");
+            return redirect()->to(base_url('register/index'));
         }
 
         $users = $this->usersModel;

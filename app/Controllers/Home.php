@@ -224,6 +224,7 @@ class Home extends BaseController
             return redirect()->to(base_url('home/error_404'));
         }
 
+
         $data = [
             'title' => 'Edit | CodeBreak',
             'header' => 'Edit Proposal',

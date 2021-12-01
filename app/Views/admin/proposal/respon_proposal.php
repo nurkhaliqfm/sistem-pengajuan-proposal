@@ -33,11 +33,11 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="inputProjectLeader">Penanggung Jawab</label>
+                                <label for="inputProjectLeader">Nama Pengusul</label>
                                 <input disabled type="text" name="name" class="form-control" value="<?= $proposal['username']; ?>">
                             </div>
                             <div class="form-group">
-                                <label for="inputName">Judul Project</label>
+                                <label for="inputName">Jenis Kegiatan Usulan</label>
                                 <input disabled type="text" name="title" class="form-control" value="<?= $proposal['project']; ?>">
                             </div>
                         </div>
@@ -71,13 +71,6 @@
                                                 <?= $validation->getError('inputStatus'); ?>
                                             </div>
                                         </div>
-                                        <!-- <div class="form-group">
-                                            <label for="inputProjectLeader">Status</label>
-                                            <input type="text" name="status" class="form-control <?= ($validation->hasError('status')) ? 'is-invalid' : ''; ?>" placeholder="Status" value="<?= (old('status')) ? old('status') : $proposal['status']; ?>">
-                                            <div class="invalid-feedback">
-                                                <?= $validation->getError('note'); ?>
-                                            </div>
-                                        </div> -->
                                         <div class="form-group">
                                             <label for="inputDescription">Catatan Proposal</label>
                                             <textarea name="note" class="form-control <?= ($validation->hasError('note')) ? 'is-invalid' : ''; ?>" rows="4" placeholder="Catatan Untuk Yang Memasukkan Proposal"><?= old('note'); ?></textarea>

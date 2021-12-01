@@ -38,6 +38,8 @@ $routes->get('/admin', 'Admin::index');
 $routes->get('/admin/index', 'Admin::index');
 
 $routes->get('/admin/error_404', 'Admin::error_404');
+$routes->get('/admin/penyuluh', 'Admin::penyuluh');
+$routes->get('/admin/penyuluh/create', 'Admin::create');
 $routes->get('/admin/kelola_pengguna', 'Admin::kelola_pengguna');
 $routes->get('/admin/kelola_pengguna/p', 'Admin::kelola_pengguna/p');
 $routes->get('/admin/kelola_pengguna/a', 'Admin::kelola_pengguna/a');
