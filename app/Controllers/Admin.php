@@ -26,7 +26,7 @@ class Admin extends BaseController
 
     public function index()
     {
-        if (session()->get('user_level') != 'admin') {
+        if (session()->get('user_level') == 'penyuluh') {
             return redirect()->to(base_url('home/error_404'));
         }
 
@@ -42,12 +42,11 @@ class Admin extends BaseController
     public function kelola_pengguna($filter_value = 'p')
     {
 
-        if (session()->get('user_level') != 'admin') {
+        if (session()->get('user_level') == 'admin') {
+            return redirect()->to(base_url('admin/error_404'));
+        } else if (session()->get('user_level') == 'penyuluh') {
             return redirect()->to(base_url('home/error_404'));
         }
-        // else if (session()->get('user_level') != 'SuperAdmin') {
-        // return redirect()->to(base_url('admin/error_404'));
-        // }
 
         $nik = session()->get('nik');
         $admin = $this->adminModel->where(['nik' => $nik])->first();
@@ -60,6 +59,7 @@ class Admin extends BaseController
                 'header' => 'Kelola Pengguna',
                 'data_user' => $data_admin,
                 'admin_name' => $admin['full_name']
+
             ];
         } else {
             $data = [
@@ -75,7 +75,9 @@ class Admin extends BaseController
 
     public function proposal_masuk()
     {
-        if (session()->get('user_level') != 'admin') {
+        if (session()->get('user_level') == 'admin') {
+            return redirect()->to(base_url('admin/error_404'));
+        } else if (session()->get('user_level') == 'penyuluh') {
             return redirect()->to(base_url('home/error_404'));
         }
 
@@ -93,7 +95,9 @@ class Admin extends BaseController
 
     public function proposal_disetujui()
     {
-        if (session()->get('user_level') != 'admin') {
+        if (session()->get('user_level') == 'admin') {
+            return redirect()->to(base_url('admin/error_404'));
+        } else if (session()->get('user_level') == 'penyuluh') {
             return redirect()->to(base_url('home/error_404'));
         }
 
@@ -111,7 +115,9 @@ class Admin extends BaseController
 
     public function proposal_ditolak()
     {
-        if (session()->get('user_level') != 'admin') {
+        if (session()->get('user_level') == 'admin') {
+            return redirect()->to(base_url('admin/error_404'));
+        } else if (session()->get('user_level') == 'penyuluh') {
             return redirect()->to(base_url('home/error_404'));
         }
 
@@ -139,7 +145,9 @@ class Admin extends BaseController
             $data_user = $d_admin;
         }
 
-        if (session()->get('user_level') != 'admin') {
+        if (session()->get('user_level') == 'admin') {
+            return redirect()->to(base_url('admin/error_404'));
+        } else if (session()->get('user_level') == 'penyuluh') {
             return redirect()->to(base_url('home/error_404'));
         } elseif ($data_user == null) {
             return redirect()->to(base_url('admin/error_404'));
@@ -160,7 +168,9 @@ class Admin extends BaseController
         $admin = $this->adminModel->where(['nik' => $nik])->first();
         $data_proposal = $this->proposalModel->where(['slug' => $slug])->first();
 
-        if (session()->get('user_level') != 'admin') {
+        if (session()->get('user_level') == 'admin') {
+            return redirect()->to(base_url('admin/error_404'));
+        } else if (session()->get('user_level') == 'penyuluh') {
             return redirect()->to(base_url('home/error_404'));
         } elseif ($data_proposal == null) {
             return redirect()->to(base_url('admin/error_404'));
@@ -177,7 +187,9 @@ class Admin extends BaseController
 
     public function delete($id)
     {
-        if (session()->get('user_level') != 'admin') {
+        if (session()->get('user_level') == 'admin') {
+            return redirect()->to(base_url('admin/error_404'));
+        } else if (session()->get('user_level') == 'penyuluh') {
             return redirect()->to(base_url('home/error_404'));
         }
 
@@ -196,7 +208,9 @@ class Admin extends BaseController
         $admin = $this->adminModel->where(['nik' => $nik])->first();
         $data_proposal = $this->proposalModel->where(['slug' => $slug])->first();
 
-        if (session()->get('user_level') != 'admin') {
+        if (session()->get('user_level') == 'admin') {
+            return redirect()->to(base_url('admin/error_404'));
+        } else if (session()->get('user_level') == 'penyuluh') {
             return redirect()->to(base_url('home/error_404'));
         } elseif ($data_proposal == null) {
             return redirect()->to(base_url('admin/error_404'));
@@ -214,7 +228,9 @@ class Admin extends BaseController
 
     public function update($id)
     {
-        if (session()->get('user_level') != 'admin') {
+        if (session()->get('user_level') == 'admin') {
+            return redirect()->to(base_url('admin/error_404'));
+        } else if (session()->get('user_level') == 'penyuluh') {
             return redirect()->to(base_url('home/error_404'));
         }
 
@@ -256,7 +272,7 @@ class Admin extends BaseController
     {
         $current_page = $this->request->getVar('page_member') ? $this->request->getVar('page_member') : 1;
 
-        if (session()->get('user_level') != 'admin') {
+        if (session()->get('user_level') == 'penyuluh') {
             return redirect()->to(base_url('home/error_404'));
         }
 
@@ -294,7 +310,7 @@ class Admin extends BaseController
 
     public function create()
     {
-        if (session()->get('user_level') != 'admin') {
+        if (session()->get('user_level') == 'penyuluh') {
             return redirect()->to(base_url('home/error_404'));
         }
 
@@ -313,7 +329,7 @@ class Admin extends BaseController
 
     public function send()
     {
-        if (session()->get('user_level') != 'admin') {
+        if (session()->get('user_level') == 'penyuluh') {
             return redirect()->to(base_url('home/error_404'));
         }
 

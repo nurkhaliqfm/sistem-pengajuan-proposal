@@ -13,7 +13,7 @@
                     </p>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" style="<?= session()->get('user_level') == 'admin' ? 'display:none;' : ''; ?>">
                 <a href="<?= base_url('admin/kelola_pengguna'); ?>" class="<?= $uri == 'kelola_pengguna' ? 'nav-link active' : 'nav-link'; ?>">
                     <i class="nav-icon fas fa-user-cog"></i>
                     <p>
@@ -29,7 +29,7 @@
                     </p>
                 </a>
             </li>
-            <li class="<?= $uri == 'proposal_masuk' || $uri == 'proposal_disetujui' || $uri == 'proposal_ditolak' ? 'nav-item menu-open active' : 'nav-item' ?>">
+            <li class="<?= $uri == 'proposal_masuk' || $uri == 'proposal_disetujui' || $uri == 'proposal_ditolak' ? 'nav-item menu-open active' : 'nav-item' ?>" style="<?= session()->get('user_level') == 'admin' ? 'display:none;' : ''; ?>">
                 <a href="<?php echo base_url('admin/proposal_masuk') ?>" class="<?= $uri == 'proposal_masuk' || $uri == 'proposal_disetujui' || $uri == 'proposal_ditolak' ? 'nav-link active' : 'nav-link' ?>">
                     <i class="nav-icon fas fa-book"></i>
                     <p>
