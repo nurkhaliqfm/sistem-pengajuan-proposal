@@ -158,4 +158,5 @@
         </section>
         <!-- /.content -->
     </div>
-    <?= $this->endSection(); ?>
+</div>
+<?= $this->endSection(); ?>
